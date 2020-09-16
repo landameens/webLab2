@@ -32,7 +32,7 @@ h3 {
 
 label {
     color: var(--second-color);
-    font-size: 15px;
+    font-size: 17px;
 }
 
 header {
@@ -153,16 +153,53 @@ footer {
     margin: auto;
 }
 
-input[type=button] {
-    background-color: var(--second-color);
-    color: var(--main-color);
-    padding: 16px 32px;
+.y-button,
+.r-button {
     text-decoration: none;
+    outline: none;
+    display: inline-block;
+    overflow: hidden;
+    border: 2px solid;
+    border-bottom-width: 4px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--yellow-color);
+    background: rgba(255, 255, 255, 1);
+    transition: color .3s, background .5s;
+    padding: 16px 32px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 8px;
-    border: none;
     background-clip: border-box;
-    transition: all 0.3s ease-out;
+}
+
+.y-button:hover,
+.r-button:hover {
+    animation: stripes .75s infinite linear;
+    background: linear-gradient(45deg, var(--yellow-color) 25%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 50%, var(--yellow-color) 50%,
+    var(--yellow-color) 75%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1));
+    background-size: 10px 10px;
+    color: var(--second-color);
+}
+
+.check-button {
     outline: none;
+    display: inline-block;
+    overflow: hidden;
+    border: 2px solid;
+    border-bottom-width: 4px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--second-color);
+    background: var(--yellow-color);
+    transition: color .3s, background .5s;
+    padding: 16px 32px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    background-clip: border-box;
 }

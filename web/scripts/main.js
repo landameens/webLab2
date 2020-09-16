@@ -1,48 +1,71 @@
 let xValue, yValue, rValue;
 
+const $xInput = $('#x-input');
+
+$xInput.on('change', function () {
+    isValidX($(this).val().replace(',', '.'));
+});
+
+$('.form_button').on('click', function () {
+    xValue = $xInput.val().replace(',', '.');
+
+    debugger;
+
+    if(isYChecked() && isValidX(xValue) && isRChecked()){
+        sendRequest("button");
+    }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const rButtons = document.querySelectorAll("input[name=R-button]");
-    rButtons.forEach(element => {
-        element.addEventListener('click', function (){
-            rValue = this.value;
-            rButtons.forEach(function (element) {
-                element.style.boxShadow = null;
-                element.style.backgroundColor = null;
-                element.style.color = null;
-            });
-            this.style.boxShadow = "0 0 40px 5px #f41c52";
-            this.style.backgroundColor = "#f41c52";
-            this.style.color = "white";
-        })
-    })
-
+    buttonOnClick(rButtons, rValue);
     const yButtons = document.querySelectorAll("input[name=Y-button]");
-    yButtons.forEach(element => {
-        element.addEventListener('click', function (){
-            rValue = this.value;
-            yButtons.forEach(function (element) {
-                element.style.boxShadow = null;
-                element.style.backgroundColor = null;
-                element.style.color = null;
-            });
-            this.style.boxShadow = "0 0 40px 5px #f41c52";
-            this.style.backgroundColor = "#f41c52";
-            this.style.color = "white";
+    buttonOnClick(yButtons, yValue);
+
+    function buttonOnClick(button, value) {
+        button.forEach(element => {
+            element.addEventListener('click', function () {
+                value = this.value;
+                button.forEach(function (element) {
+                    element.classList.remove("check-button");
+                });
+                this.classList.add("check-button");
+                this.setAttribute("checked", "");
+            })
         })
-    })
+    }
 });
+
+canvas.addEventListener("click", (event) => {
+    if (isRChecked()) {
+        let position = getRelativeCoords(event);
+        xValue = position.x;
+        yValue = position.y;
+        setPointer(xValue, yValue);
+        let k = 270 / rValue; //отношение радиуса и плоскости
+        xValue = (xValue / k).toFixed(1);
+        yValue = (yValue / k).toFixed(1);
+        sendRequest("canvas");
+    }
+});
+
+
+function isYChecked() {
+    const y = $(".y-button").checked;
+    yValue = y.val();
+    return y
+}
 
 function getRelativeCoords(event) {
     return { x: event.offsetX, y: event.offsetY };
 }
 
-function validateR() {
-    try {
-        return !isNaN(rValue);
-    } catch (err) {
-        alert("Значение R не выбрано");
-        return false;
+function isRChecked() {
+    const r = $('.r-button');
+    for (let i = 0; i < r.length; i++) {
+        rValue = r[i].onclick;
     }
+    return rValue;
 }
 
 
@@ -51,58 +74,22 @@ function sendRequest(key) {
     if (keys.includes(key)) {
         const request = "x=" + encodeURIComponent(xValue) + "&y=" + encodeURIComponent(yValue) + "&r=" + encodeURIComponent(rValue) +
             "&key=" + encodeURIComponent(key);
-        fetch(`/controller?${'x=2'}`
-        ).then(r => console.log(r))
+        fetch(`/controller?${request}`)
+            .then(r => console.log(r))
     }
+}
 
-    document.addEventListener("DOMContentLoaded", () => {
-        canvas.addEventListener("click", (event) => {
-            if (validateR()) {
-                let position = getRelativeCoords(event);
-                xValue = position.x;
-                yValue = position.y;
-                setPointer(xValue, yValue);
-                let k = 270 / rValue; //отношение радиуса и плоскости
-                xValue = (xValue / k).toFixed(1);
-                yValue = (yValue / k).toFixed(1);
-                sendRequest("canvas");
-            }
-        });
-    });
-
-    const $xInput = $('#x-input');
-
-    $xInput.on('change', function () {
-        xValueCheck($(this).val().replace(',', '.'));
-    });
-
-
-    $('.form_button').on('click', function (event) {
-        event.preventDefault();
-
-        const isValidX = xValueCheck($xInput.val().replace(',', '.'));
-
-        if (isValidX) {
-            $('#for_x').text('');
-            const request = new FormData();
-
-            request.append("X", $xInput.val().replace(',', '.'));
-
-            console.log($xInput.val().replace(',', '.'));
-        }
-    });
-
-    function xValueCheck(value) {
-        const errorMessage = 'Значение Y должно быть в пределах от -5 до 5.';
+    function isValidX(value) {
+        const errorMessage = 'Значение X должно быть в пределах от -3 до 3.';
 
         if (isNaN(parseFloat($xInput.val()))) {
-            $('#for_X').text('Введите значение X.');
+            $('#for_x').text('Введите значение X.');
             return false;
         } else {
             if (!isNaN(Number(value))) {
-                if (value >= -3) {
-                    if (value <= 3) {
-                        console.log('Y validation is TRUE')
+                if (value > -3) {
+                    if (value < 3) {
+                        console.log('X validation is TRUE')
                         $('#for_x').text('');
                         return true;
                     } else {
@@ -118,5 +105,4 @@ function sendRequest(key) {
                 return false;
             }
         }
-    }
 }
