@@ -25,7 +25,7 @@
 
   <main>
     <div class="flex-container">
-      <form method="get">
+      <form>
         <label for="x-input">Введите X</label>
         <input type="text" id="x-input" class="form_input" placeholder="значение из промежутка (-3, 3)">
 
@@ -49,14 +49,14 @@
           <input name="R-button" type="button" value="5">
         </div>
 
-        <button type="submit" class="form_button">Узнать ответ</button>
+        <button class="form_button">Узнать ответ</button>
       </form>
 
       <canvas id="canvas" width="350" height="350"></canvas>
 
     </div>
 
-    <a href="https://github.com/landameens/webLab1" class="link-to-page" target="_blank"><img src="images/dbl.jpg" alt="me"></a>
+    <a href="https://github.com/landameens/webLab2" class="link-to-page" target="_blank"><img src="images/dbl.jpg" alt="me"></a>
   </main>
 
   <footer>

@@ -67,7 +67,7 @@ form {
     margin-bottom: 16px;
     padding: 8px 16px;
     transition: transform 0.3s ease-out;
-    color: var(--second-color);
+    color: var(--main-color);
     border: none;
     border-radius: 8px;
     outline: none;
