@@ -9,10 +9,25 @@ $xInput.on('change', function () {
 $('.form_button').on('click', function () {
     xValue = $xInput.val().replace(',', '.');
 
-    debugger;
-
-    if(isYChecked() && isValidX(xValue) && isRChecked()){
+    if (isValidX(xValue) && isRChecked() && isYChecked()) {
         sendRequest("button");
+    }
+});
+
+canvas.addEventListener("click", (event) => {
+    if (isRChecked()) {
+        let position = getRelativeCoords(event);
+        xValue = position.x;
+        yValue = position.y;
+        setPointer(xValue, yValue);
+        xValue = xValue - 150;
+        yValue = 180 - yValue;
+        const k = rValue / 140
+        xValue = (xValue * k).toFixed(1);
+        yValue = (yValue * k).toFixed(1);
+        sendRequest("canvas");
+    } else {
+        $('.for_notes').text("Сначала выберите значение R");
     }
 });
 
@@ -28,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 value = this.value;
                 button.forEach(function (element) {
                     element.classList.remove("check-button");
+                    element.removeAttribute("checked");
                 });
                 this.classList.add("check-button");
                 this.setAttribute("checked", "");
@@ -36,66 +52,65 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-canvas.addEventListener("click", (event) => {
-    if (isRChecked()) {
-        let position = getRelativeCoords(event);
-        xValue = position.x;
-        yValue = position.y;
-        setPointer(xValue, yValue);
-        let k = 270 / rValue; //отношение радиуса и плоскости
-        xValue = (xValue / k).toFixed(1);
-        yValue = (yValue / k).toFixed(1);
-        sendRequest("canvas");
-    }
-});
-
-
 function isYChecked() {
-    const y = $(".y-button").checked;
-    yValue = y.val();
-    return y
+    const yButtons = document.querySelectorAll("input[name=Y-button]");
+    let result = false;
+    yButtons.forEach(element => {
+        if (element.classList.contains("check-button")) {
+            yValue = element.getAttribute("value");
+            console.log("y= " + yValue);
+            result = true;
+        }
+    });
+    return result;
 }
 
+
 function getRelativeCoords(event) {
-    return { x: event.offsetX, y: event.offsetY };
+    return {x: event.offsetX, y: event.offsetY};
 }
 
 function isRChecked() {
-    const r = $('.r-button');
-    for (let i = 0; i < r.length; i++) {
-        rValue = r[i].onclick;
-    }
-    return rValue;
+    const rButtons = document.querySelectorAll("input[name=R-button]");
+    let result = false;
+    rButtons.forEach(element => {
+        if (element.classList.contains("check-button")) {
+            rValue = element.getAttribute("value");
+            console.log("r= " + rValue);
+            result = true;
+        }
+    });
+    return result
 }
 
 
 function sendRequest(key) {
     const keys = ["button", "canvas"];
     if (keys.includes(key)) {
-        const request = "x=" + encodeURIComponent(xValue) + "&y=" + encodeURIComponent(yValue) + "&r=" + encodeURIComponent(rValue) +
-            "&key=" + encodeURIComponent(key);
-        fetch(`/controller?${request}`)
-            .then(r => console.log(r))
+        const param = new URLSearchParams({
+            x: parseFloat(xValue),
+            y: parseFloat(yValue),
+            r: parseFloat(rValue),
+            key: key,
+        });
+        console.log(param);
+        fetch(`/controller?` + param).then(r => console.log(r))
     }
 }
 
-    function isValidX(value) {
-        const errorMessage = 'Значение X должно быть в пределах от -3 до 3.';
+function isValidX(value) {
+    const errorMessage = 'Значение X должно быть в пределах от -3 до 3.';
 
-        if (isNaN(parseFloat($xInput.val()))) {
-            $('#for_x').text('Введите значение X.');
-            return false;
-        } else {
-            if (!isNaN(Number(value))) {
-                if (value > -3) {
-                    if (value < 3) {
-                        console.log('X validation is TRUE')
-                        $('#for_x').text('');
-                        return true;
-                    } else {
-                        $('#for_x').text(errorMessage);
-                        return false;
-                    }
+    if (isNaN(parseFloat($xInput.val()))) {
+        $('#for_x').text('Введите значение X.');
+        return false;
+    } else {
+        if (!isNaN(Number(value))) {
+            if (value > -3) {
+                if (value < 3) {
+                    console.log('x= ' + value);
+                    $('#for_x').text('');
+                    return true;
                 } else {
                     $('#for_x').text(errorMessage);
                     return false;
@@ -104,5 +119,9 @@ function sendRequest(key) {
                 $('#for_x').text(errorMessage);
                 return false;
             }
+        } else {
+            $('#for_x').text(errorMessage);
+            return false;
         }
+    }
 }

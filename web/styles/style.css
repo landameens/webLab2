@@ -58,7 +58,7 @@ main {
 
 form {
     text-align: center;
-    margin-left: 10%;
+    margin-left: 6%;
 }
 
 .form_input {
@@ -72,7 +72,7 @@ form {
     border-radius: 8px;
     outline: none;
     background-color: var(--second-color);
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .form_input::placeholder {
@@ -161,18 +161,19 @@ footer {
     overflow: hidden;
     border: 2px solid;
     border-bottom-width: 4px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: sans-serif;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
     color: var(--yellow-color);
     background: rgba(255, 255, 255, 1);
     transition: color .3s, background .5s;
-    padding: 16px 32px;
+    padding: 15px 40px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 8px;
     background-clip: border-box;
+    font-size: 20px;
 }
 
 .y-button:hover,
@@ -185,21 +186,16 @@ footer {
 }
 
 .check-button {
-    outline: none;
-    display: inline-block;
-    overflow: hidden;
-    border: 2px solid;
-    border-bottom-width: 4px;
-    font-family: sans-serif;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 2px;
     color: var(--second-color);
     background: var(--yellow-color);
-    transition: color .3s, background .5s;
-    padding: 16px 32px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 8px;
-    background-clip: border-box;
+}
+
+.r-input,
+.y-input {
+    margin-bottom: 16px;
+}
+
+.flex-container-foot{
+    display: flex;
+    flex-direction: column;
 }

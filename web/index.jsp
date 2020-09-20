@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <title>Lab_2</title>
     <link rel="shortcut icon" href="./images/15.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="example/node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="styles/style.css">
     <title>Лабораторная работа №2</title>
 </head>
@@ -78,7 +78,7 @@
 </footer>
 
 <script>
-    <%@include file="scripts/jquery.min.js" %>
+    <%@include file="example/node_modules/jquery/dist/jquery.min.js" %>
 </script>
 <script>
     <%@include file="scripts/canvas.js" %>

@@ -22,6 +22,10 @@ public class ControllerServlet extends HttpServlet {
         out.println("</p>");
         out.println("</body>");
         out.println("</html>");
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }
