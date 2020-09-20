@@ -6,7 +6,8 @@ $xInput.on('change', function () {
     isValidX($(this).val().replace(',', '.'));
 });
 
-$('.form_button').on('click', function () {
+$('.form_button').on('click', function (event) {
+    event.preventDefault();
     xValue = $xInput.val().replace(',', '.');
 
     if (isValidX(xValue) && isRChecked() && isYChecked()) {
@@ -87,14 +88,15 @@ function isRChecked() {
 function sendRequest(key) {
     const keys = ["button", "canvas"];
     if (keys.includes(key)) {
-        const param = new URLSearchParams({
+        fetch(`/webLab2_war_exploded/controller?` + new URLSearchParams({
             x: parseFloat(xValue),
             y: parseFloat(yValue),
             r: parseFloat(rValue),
             key: key,
-        });
-        console.log(param);
-        fetch(`/controller?` + param).then(r => console.log(r))
+        })).then(r => r.text())
+            .then(result => {
+                console.log(result);
+            })
     }
 }
 

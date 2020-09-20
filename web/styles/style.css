@@ -195,7 +195,7 @@ footer {
     margin-bottom: 16px;
 }
 
-.flex-container-foot{
+.flex-container-foot {
     display: flex;
     flex-direction: column;
 }

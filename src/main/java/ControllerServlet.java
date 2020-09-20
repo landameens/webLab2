@@ -4,24 +4,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/controller")
 public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String pageTitle = "Пример сервлета";
-        resp.setContentType("text/html");
-        PrintWriter out = resp.getWriter();
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>" + pageTitle + "</title>");
-        out.println("</head>");
-        out.println("<body bgcolor='white'>");
-        out.println("<h3>" + pageTitle + "</h3>");
-        out.println("</p>");
-        out.println("</body>");
-        out.println("</html>");
+
+        if (req.getParameter("x") == null || req.getParameter("y") == null ||
+                req.getParameter("r") == null || req.getParameter("key") == null) {
+            req.getServletContext().getNamedDispatcher("Controller").forward(req, resp);
+        } else {
+            getServletContext().getNamedDispatcher("AreaCheckServlet").forward(req, resp);
+        }
     }
 
     @Override
