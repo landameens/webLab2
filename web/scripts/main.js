@@ -95,7 +95,7 @@ function sendRequest(key) {
             key: key,
         })).then(r => r.text())
             .then(result => {
-                console.log(result);
+                document.write(result);
             })
     }
 }

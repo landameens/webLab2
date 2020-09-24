@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <title>Lab_2</title>
@@ -22,8 +23,9 @@
 </header>
 
 <main>
-    <canvas id="canvas" width="350" height="350"></canvas>
-
+    <p>Введенные данные:</p>
+    <a class="form_button" type="submit" href="${pageContext.request.contextPath}/index.jsp">Вернуться на главную
+        страницу</a>
     <table>
         <tr>
             <th>X</th>
@@ -39,20 +41,17 @@
     </table>
 
 
-    <a href="https://github.com/landameens/webLab2" class="link-to-page" target="_blank"><img src="images/dbl.jpg"
-                                                                                              alt="me"></a>
+    <div class="link-to-page">
+        <a href="https://github.com/landameens/webLab2" target="_blank"><img src="images/dbl.jpg"
+                                                                             alt="me"></a>
+        <a href="https://docs.google.com/document/d/1Yb9C2Pw1iVHMJi087HbvO4OluI3AV1B9yrg9CD2zpfA/edit?usp=sharing"
+           target="_blank"><img src="images/report.png" alt="report"></a>
+    </div>
 </main>
 
 <footer>
     <a href="https://ifmo.ru/ru"><img alt="Логотип ИТМО" title="Перейти на сайт университета"
                                       src="images/itmo-logo.png"></a>
 </footer>
-
-<script>
-    <%@include file="example/node_modules/jquery/dist/jquery.min.js" %>
-</script>
-<script>
-    <%@include file="scripts/canvas.js" %>
-</script>
 </body>
 </html>

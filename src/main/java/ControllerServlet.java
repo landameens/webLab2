@@ -12,6 +12,7 @@ public class ControllerServlet extends HttpServlet {
 
         if (req.getParameter("x") == null || req.getParameter("y") == null ||
                 req.getParameter("r") == null || req.getParameter("key") == null) {
+            resp.setCharacterEncoding("UTF-8");
             req.getServletContext().getNamedDispatcher("Controller").forward(req, resp);
         } else {
             getServletContext().getNamedDispatcher("AreaCheckServlet").forward(req, resp);

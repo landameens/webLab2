@@ -68,8 +68,13 @@
 
     </div>
 
-    <a href="https://github.com/landameens/webLab2" class="link-to-page" target="_blank"><img src="images/dbl.jpg"
-                                                                                              alt="me"></a>
+    <div class="link-to-page">
+        <a href="https://github.com/landameens/webLab2" target="_blank"><img src="images/dbl.jpg"
+                                                                             alt="me"></a>
+        <a href="https://docs.google.com/document/d/1Yb9C2Pw1iVHMJi087HbvO4OluI3AV1B9yrg9CD2zpfA/edit?usp=sharing"
+           target="_blank"><img src="images/report.png" alt="report"></a>
+    </div>
+
 </main>
 
 <footer>

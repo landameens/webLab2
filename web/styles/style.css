@@ -134,6 +134,7 @@ canvas {
     width: 100%;
     height: auto;
     display: block;
+    margin-bottom: 5px;
 }
 
 table {
@@ -198,4 +199,8 @@ footer {
 .flex-container-foot {
     display: flex;
     flex-direction: column;
+}
+
+a{
+    visibility: hidden;
 }
