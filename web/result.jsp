@@ -23,7 +23,25 @@
 </header>
 
 <main>
-    <p>Введенные данные:</p>
+    <h3>Введенные данные:</h3>
+    <table>
+        <tr>
+            <th>X</th>
+            <td><%= request.getParameter("x") %></td>
+        </tr>
+        <tr>
+            <th>Y</th>
+            <td><%= request.getParameter("y") %></td>
+        </tr>
+        <tr>
+            <th>R</th>
+            <td><%= request.getParameter("r") %></td>
+        </tr>
+        <tr>
+            <th>Результат</th>
+            <td><%= response.getHeader("result") %></td>
+        </tr>
+    </table>
     <a class="form_button" type="submit" href="${pageContext.request.contextPath}/index.jsp">Вернуться на главную
         страницу</a>
     <table>
@@ -36,7 +54,6 @@
             <th>Время выполнения</th>
         </tr>
         <tr>
-            <td></td>
         </tr>
     </table>
 

@@ -19,23 +19,25 @@ public class AreaCheckServlet extends HttpServlet {
         double r = Double.parseDouble(req.getParameter("r"));
         String key = req.getParameter("key");
 
-        checkData(x, y, r);
+        resp.addHeader("result", checkData(x, y, r));
 
 
         req.getServletContext().getRequestDispatcher("/result.jsp").forward(req, resp);
 
     }
 
-    private boolean checkData(double x, double y, double r) {
+    private String checkData(double x, double y, double r) {
+        final String positiveResult = "Попадает в область";
+        final String negativeResult = "Не попадает в область";
         if (x >= 0 && y >= 0 && y <= (r / 2) - x) {
-            return true;
+            return positiveResult;
         }
         if (x >= 0 && y <= 0 && ((x * x + y * y) <= (r / 2) * (r / 2))) {
-            return true;
+            return positiveResult;
         }
         if (x <= 0 && y <= 0 && x >= -r && y >= -r) {
-            return true;
+            return positiveResult;
         }
-        return false;
+        return negativeResult;
     }
 }
