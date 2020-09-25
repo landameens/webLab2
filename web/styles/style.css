@@ -139,21 +139,21 @@ canvas {
 
 table {
     font-size: 20px;
-    width: 640px;
-    text-align: left;
+    width: 100%;
     border-collapse: collapse;
-    background: var(--third-color);
-    margin: 10px;
+    background: var(--second-color);
     border-radius: 8px;
+    margin: auto auto 16px;
+    text-align: center;
 }
 table th {
     color: var(--yellow-color);
-    border-bottom: 1px solid var(--second-color);
+    border-bottom: 1px solid var(--main-color);
     padding: 12px 17px;
 }
 table td {
     color: var(--main-color);
-    border-bottom: 1px solid var(--second-color);
+    border-bottom: 1px solid var(--main-color);
     border-right:1px solid var(--third-color);
     padding: 7px 17px;
 }
@@ -208,8 +208,12 @@ footer {
 }
 
 .r-input,
-.y-input {
+.y-input{
     margin-bottom: 16px;
+}
+
+.back-button{
+    margin: auto auto 16px;
 }
 
 .flex-container-foot {
@@ -218,10 +222,10 @@ footer {
 }
 
 .result{
-    color: var(--yellow-color);
     font-weight: bold;
 }
 
 a{
     text-decoration: none;
+    display: block;
 }

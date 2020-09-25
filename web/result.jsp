@@ -23,7 +23,6 @@
 </header>
 
 <main>
-    <h3>Введенные данные:</h3>
     <table>
         <tr>
             <th>X</th>
@@ -42,16 +41,16 @@
             <td class="result"><%= response.getHeader("result") %></td>
         </tr>
     </table>
+
     <a class="back-button" href="${pageContext.request.contextPath}/index.jsp">Вернуться на главную
         страницу</a>
+
     <table>
         <tr>
             <th>X</th>
             <th>Y</th>
             <th>R</th>
             <th>Результат</th>
-            <th>Текущее время</th>
-            <th>Время выполнения</th>
         </tr>
         <tr>
         </tr>
