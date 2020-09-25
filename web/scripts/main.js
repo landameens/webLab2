@@ -92,7 +92,6 @@ function sendRequest(key) {
             x: parseFloat(xValue),
             y: parseFloat(yValue),
             r: parseFloat(rValue),
-            key: key,
         })).then(r => r.text())
             .then(result => {
                 document.write(result);

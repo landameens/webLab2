@@ -11,7 +11,7 @@ public class ControllerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         if (req.getParameter("x") == null || req.getParameter("y") == null ||
-                req.getParameter("r") == null || req.getParameter("key") == null) {
+                req.getParameter("r") == null) {
             resp.setCharacterEncoding("UTF-8");
             req.getServletContext().getNamedDispatcher("Controller").forward(req, resp);
         } else {

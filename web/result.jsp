@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: user
   Date: 20.09.2020
@@ -23,22 +23,33 @@
 </header>
 
 <main>
-    <table>
+    <table class="result-table">
         <tr>
             <th>X</th>
-            <td><%= request.getParameter("x") %></td>
+            <td><%= request.getParameter("x") %>
+            </td>
         </tr>
         <tr>
             <th>Y</th>
-            <td><%= request.getParameter("y") %></td>
+            <td><%= request.getParameter("y") %>
+            </td>
         </tr>
         <tr>
             <th>R</th>
-            <td><%= request.getParameter("r") %></td>
+            <td><%= request.getParameter("r") %>
+            </td>
         </tr>
         <tr>
             <th>Результат</th>
-            <td class="result"><%= response.getHeader("result") %></td>
+            <td class="result"><%= response.getHeader("result") %>
+            </td>
+        </tr>
+        <tr>
+            <th>Текущее время</th>
+            <td><%= new Date()%></td>
+        </tr>
+        <tr>
+            <th>Время выполнения</th>
         </tr>
     </table>
 
@@ -51,9 +62,11 @@
             <th>Y</th>
             <th>R</th>
             <th>Результат</th>
+            <th>Время запроса</th>
         </tr>
-        <tr>
-        </tr>
+        <%=
+        application.getAttribute("arrayPoints")
+        %>
     </table>
 
 
