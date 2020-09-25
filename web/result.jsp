@@ -39,10 +39,10 @@
         </tr>
         <tr>
             <th>Результат</th>
-            <td><%= response.getHeader("result") %></td>
+            <td class="result"><%= response.getHeader("result") %></td>
         </tr>
     </table>
-    <a class="form_button" type="submit" href="${pageContext.request.contextPath}/index.jsp">Вернуться на главную
+    <a class="back-button" href="${pageContext.request.contextPath}/index.jsp">Вернуться на главную
         страницу</a>
     <table>
         <tr>
