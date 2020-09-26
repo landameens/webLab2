@@ -72,7 +72,7 @@
         <a href="https://github.com/landameens/webLab2" target="_blank"><img src="images/dbl.jpg"
                                                                              alt="me"></a>
         <a href="https://docs.google.com/document/d/1Yb9C2Pw1iVHMJi087HbvO4OluI3AV1B9yrg9CD2zpfA/edit?usp=sharing"
-           target="_blank"><img src="images/report.png" alt="report"></a>
+           target="_blank"><img src="images/document.png" alt="report"></a>
     </div>
 
 </main>

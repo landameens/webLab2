@@ -39,9 +39,9 @@ public class Point {
     @Override
     public String toString() {
         return "<tr>" +
-                "<td>" + getX() + "</td>" +
-                "<td>" + getY() + "</td>" +
-                "<td>" + getR() + "</td>" +
+                "<td>" + String.valueOf(getX()).replace(".", ",") + "</td>" +
+                "<td>" + String.valueOf(getY()).replace(".", ",") + "</td>" +
+                "<td>" + String.valueOf(getR()).replace(".", ",") + "</td>" +
                 "<td>" + getResult() + "</td>" +
                 "<td>" + dateFormat.format(date) + "</td>" +
                 "</tr>";

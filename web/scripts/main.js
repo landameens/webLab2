@@ -1,16 +1,13 @@
 let xValue, yValue, rValue;
 
-const $xInput = $('#x-input');
-
-$xInput.on('change', function () {
-    isValidX($(this).val().replace(',', '.'));
-});
-
 $('.form_button').on('click', function (event) {
     event.preventDefault();
-    xValue = $xInput.val().replace(',', '.');
 
-    if (isValidX(xValue) && isRChecked() && isYChecked()) {
+    xValue = $xInput.val().replace(',', '.');
+    const isValidY = isYChecked();
+    const isValidR = isRChecked();
+
+    if (isValidX(xValue) && isValidY && isValidR) {
         sendRequest("button");
     }
 });
@@ -53,37 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-function isYChecked() {
-    const yButtons = document.querySelectorAll("input[name=Y-button]");
-    let result = false;
-    yButtons.forEach(element => {
-        if (element.classList.contains("check-button")) {
-            yValue = element.getAttribute("value");
-            console.log("y= " + yValue);
-            result = true;
-        }
-    });
-    return result;
-}
-
-
 function getRelativeCoords(event) {
     return {x: event.offsetX, y: event.offsetY};
 }
-
-function isRChecked() {
-    const rButtons = document.querySelectorAll("input[name=R-button]");
-    let result = false;
-    rButtons.forEach(element => {
-        if (element.classList.contains("check-button")) {
-            rValue = element.getAttribute("value");
-            console.log("r= " + rValue);
-            result = true;
-        }
-    });
-    return result
-}
-
 
 function sendRequest(key) {
     const keys = ["button", "canvas"];
@@ -99,30 +68,74 @@ function sendRequest(key) {
     }
 }
 
-function isValidX(value) {
-    const errorMessage = 'Значение X должно быть в пределах от -3 до 3.';
+function isRChecked() {
+    const rButtons = document.querySelectorAll("input[name=R-button]");
+    let result = false;
+    rButtons.forEach(element => {
+        if (element.classList.contains("check-button")) {
+            rValue = element.getAttribute("value");
+            console.log("r= " + rValue);
+            result = true;
+        }
+    });
 
+    if (result === false){
+        notChecked($('#r-input'))
+    } else {
+        removeNotChecked($('#r-input'))
+    }
+    return result
+}
+
+function isYChecked() {
+    const yButtons = document.querySelectorAll("input[name=Y-button]");
+    let result = false;
+    yButtons.forEach(element => {
+        if (element.classList.contains("check-button")) {
+            yValue = element.getAttribute("value");
+            console.log("y= " + yValue);
+            result = true;
+        }
+    });
+
+    if (result === false){
+        notChecked($('#y-input'))
+    } else {
+        removeNotChecked($('#y-input'))
+    }
+    return result;
+}
+
+function isValidX(value) {
     if (isNaN(parseFloat($xInput.val()))) {
-        $('#for_x').text('Введите значение X.');
+        notChecked($('#x-input'));
         return false;
     } else {
         if (!isNaN(Number(value))) {
             if (value > -3) {
                 if (value < 3) {
                     console.log('x= ' + value);
-                    $('#for_x').text('');
+                    removeNotChecked($('#x-input'));
                     return true;
                 } else {
-                    $('#for_x').text(errorMessage);
+                    notChecked($('#x-input'));
                     return false;
                 }
             } else {
-                $('#for_x').text(errorMessage);
+                notChecked($('#x-input'));
                 return false;
             }
         } else {
-            $('#for_x').text(errorMessage);
+            notChecked($('#x-input'));
             return false;
         }
     }
+}
+
+function notChecked(element) {
+    element.prev("label").addClass("not-checked");
+}
+
+function removeNotChecked(element){
+    element.prev("label").removeClass("not-checked");
 }
