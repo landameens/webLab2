@@ -1,4 +1,5 @@
 let xValue, yValue, rValue;
+const $xInput = $('#x-input');
 
 $('.form_button').on('click', function (event) {
     event.preventDefault();
