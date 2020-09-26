@@ -146,25 +146,29 @@ table {
     margin: auto auto 16px;
     text-align: center;
 }
+
 table th {
     color: var(--yellow-color);
     border-bottom: 1px solid var(--main-color);
     padding: 12px 17px;
 }
+
 table td {
     color: var(--main-color);
     border-bottom: 1px solid var(--main-color);
-    border-right:1px solid var(--third-color);
+    border-right: 1px solid var(--third-color);
     padding: 7px 17px;
 }
+
 table tr:last-child td {
     border-bottom: none;
 }
+
 table td:last-child {
     border-right: none;
 }
 
-.result-table{
+.result-table {
 
 }
 
@@ -174,7 +178,7 @@ footer {
 
 .y-button,
 .r-button,
-.back-button{
+.back-button {
     text-decoration: none;
     outline: none;
     display: inline-block;
@@ -212,11 +216,11 @@ footer {
 }
 
 .r-input,
-.y-input{
+.y-input {
     margin-bottom: 16px;
 }
 
-.back-button{
+.back-button {
     margin: auto auto 16px;
 }
 
@@ -225,11 +229,11 @@ footer {
     flex-direction: column;
 }
 
-.result{
+.result {
     font-weight: bold;
 }
 
-a{
+a {
     text-decoration: none;
     display: block;
 }

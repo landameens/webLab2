@@ -1,16 +1,23 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Point {
-    private double x;
-    private double y;
-    private double r;
+    private final double x;
+    private final double y;
+    private final double r;
     private final String result;
+    DateFormat dateFormat;
+    Date date;
+
 
     public Point(double x, double y, double r, String result) {
         this.x = x;
         this.y = y;
         this.r = r;
         this.result = result;
+        dateFormat = new SimpleDateFormat("HH:mm dd/MM/yy");
+        date = new Date();
     }
 
     public double getX() {
@@ -36,7 +43,7 @@ public class Point {
                 "<td>" + getY() + "</td>" +
                 "<td>" + getR() + "</td>" +
                 "<td>" + getResult() + "</td>" +
-                "<td>" + new Date().toString() + "</td>" +
+                "<td>" + dateFormat.format(date) + "</td>" +
                 "</tr>";
     }
 }

@@ -26,17 +26,17 @@
     <table class="result-table">
         <tr>
             <th>X</th>
-            <td><%= request.getParameter("x") %>
+            <td><%= request.getParameter("x").replace(".", ",") %>
             </td>
         </tr>
         <tr>
             <th>Y</th>
-            <td><%= request.getParameter("y") %>
+            <td><%= request.getParameter("y").replace(".", ",") %>
             </td>
         </tr>
         <tr>
             <th>R</th>
-            <td><%= request.getParameter("r") %>
+            <td><%= request.getParameter("r").replace(".", ",") %>
             </td>
         </tr>
         <tr>
@@ -46,10 +46,11 @@
         </tr>
         <tr>
             <th>Текущее время</th>
-            <td><%= new Date()%></td>
-        </tr>
-        <tr>
-            <th>Время выполнения</th>
+            <%
+                java.text.DateFormat df = new java.text.SimpleDateFormat("HH:mm:ss dd/MM/yy");
+            %>
+            <td><%= df.format(new java.util.Date()) %>
+            </td>
         </tr>
     </table>
 
@@ -64,9 +65,7 @@
             <th>Результат</th>
             <th>Время запроса</th>
         </tr>
-        <%=
-        application.getAttribute("arrayPoints")
-        %>
+        <%= application.getAttribute("arrayPoints") %>
     </table>
 
 
