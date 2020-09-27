@@ -25,8 +25,6 @@ canvas.addEventListener("click", (event) => {
         xValue = (xValue * k).toFixed(1);
         yValue = (yValue * k).toFixed(1);
         sendRequest("canvas");
-    } else {
-        $('.for_notes').text("Сначала выберите значение R");
     }
 });
 
@@ -109,25 +107,25 @@ function isYChecked() {
 
 function isValidX(value) {
     if (isNaN(parseFloat($xInput.val()))) {
-        notChecked($('#x-input'));
+        notChecked($xInput);
         return false;
     } else {
         if (!isNaN(Number(value))) {
             if (value > -3) {
                 if (value < 3) {
                     console.log('x= ' + value);
-                    removeNotChecked($('#x-input'));
+                    removeNotChecked($xInput);
                     return true;
                 } else {
-                    notChecked($('#x-input'));
+                    notChecked($xInput);
                     return false;
                 }
             } else {
-                notChecked($('#x-input'));
+                notChecked($xInput);
                 return false;
             }
         } else {
-            notChecked($('#x-input'));
+            notChecked($xInput);
             return false;
         }
     }

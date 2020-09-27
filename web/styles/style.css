@@ -170,7 +170,8 @@ table td:last-child {
 
 .not-checked {
     font-weight: bolder;
-    color: red;
+    color: var(--yellow-color);
+    text-shadow: 2px 1px red;
     font-size: 20px;
 }
 
