@@ -31,34 +31,24 @@
 
             <label for="y-input">Выберите Y</label>
             <div class="y-input" id="y-input">
-                <div class="flex-container">
                     <input name="Y-button" class="y-button" type="button" value="-4">
                     <input name="Y-button" class="y-button" type="button" value="-3">
                     <input name="Y-button" class="y-button" type="button" value="-2">
-                </div>
-                <div class="flex-container">
                     <input name="Y-button" class="y-button" type="button" value="-1">
                     <input name="Y-button" class="y-button" type="button" value="&nbsp;0">
                     <input name="Y-button" class="y-button" type="button" value="&nbsp;1">
-                </div>
-                <div class="flex-container">
                     <input name="Y-button" class="y-button" type="button" value="&nbsp;2">
                     <input name="Y-button" class="y-button" type="button" value="&nbsp;3">
                     <input name="Y-button" class="y-button" type="button" value="&nbsp;4">
-                </div>
             </div>
 
             <label for="r-input">Выберите R</label>
             <div class="r-input" id="r-input">
-                <div class="flex-container">
                     <input name="R-button" class="r-button" type="button" value="&nbsp;1">
                     <input name="R-button" class="r-button" type="button" value="&nbsp;2">
                     <input name="R-button" class="r-button" type="button" value="&nbsp;3">
-                </div>
-                <div class="flex-container">
                     <input name="R-button" class="r-button" type="button" value="&nbsp;4">
                     <input name="R-button" class="r-button" type="button" value="&nbsp;5">
-                </div>
             </div>
 
             <button class="form_button">Узнать ответ</button>

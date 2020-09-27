@@ -78,7 +78,7 @@ function isRChecked() {
         }
     });
 
-    if (result === false){
+    if (result === false) {
         notChecked($('#r-input'))
     } else {
         removeNotChecked($('#r-input'))
@@ -97,7 +97,7 @@ function isYChecked() {
         }
     });
 
-    if (result === false){
+    if (result === false) {
         notChecked($('#y-input'))
     } else {
         removeNotChecked($('#y-input'))
@@ -135,6 +135,6 @@ function notChecked(element) {
     element.prev("label").addClass("not-checked");
 }
 
-function removeNotChecked(element){
+function removeNotChecked(element) {
     element.prev("label").removeClass("not-checked");
 }

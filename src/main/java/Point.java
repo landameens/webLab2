@@ -7,7 +7,7 @@ public class Point {
     private final double y;
     private final double r;
     private final String result;
-    DateFormat dateFormat;
+    DateFormat dateFormat = new SimpleDateFormat("HH:mm dd/MM/yy");
     Date date;
 
 
@@ -16,7 +16,6 @@ public class Point {
         this.y = y;
         this.r = r;
         this.result = result;
-        dateFormat = new SimpleDateFormat("HH:mm dd/MM/yy");
         date = new Date();
     }
 
@@ -35,6 +34,14 @@ public class Point {
     public String getResult() {
         return result;
     }
+
+//    public double[] getPoint() {
+//        double k = 140 / getR();
+//        double xCoordinate = getX() * k + 150;
+//        double yCoordinate = 180 - (getY() * k);
+//
+//        return new double[]{xCoordinate, yCoordinate};
+//    }
 
     @Override
     public String toString() {

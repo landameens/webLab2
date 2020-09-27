@@ -1,4 +1,4 @@
-<%@ page import="java.util.Date" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: user
   Date: 20.09.2020
@@ -56,7 +56,6 @@
 
     <a class="back-button" href="${pageContext.request.contextPath}/index.jsp">Вернуться на главную
         страницу</a>
-
     <table>
         <tr>
             <th>X</th>

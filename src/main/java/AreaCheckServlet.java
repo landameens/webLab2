@@ -11,6 +11,7 @@ import java.util.List;
 @WebServlet(name = "AreaCheckServlet", urlPatterns = "/check")
 public class AreaCheckServlet extends HttpServlet {
     List<String> points = new ArrayList<>();
+    List<double[]> coordinates = new ArrayList<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,7 +30,10 @@ public class AreaCheckServlet extends HttpServlet {
         Point point = new Point(x, y, r, result);
         points.add(0, point.toString());
 
-        context.setAttribute("arrayPoints", points);
+        context.setAttribute("arrayPoints", points.toString().replace(",", "")
+                .replace("[", "")
+                .replace("]", ""));
+        context.setAttribute("coordinates", coordinates);
 
         req.getServletContext().getRequestDispatcher("/result.jsp").forward(req, resp);
 
