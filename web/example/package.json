@@ -1,0 +1,19 @@
+{
+  "name": "web-lab-2",
+  "version": "1.0.0",
+  "description": "second lab",
+  "main": "index.jsp",
+  "repository": {
+    "type": "git",
+    "url": "webLab2"
+  },
+  "keywords": [
+    "web"
+  ],
+  "author": "landameens",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "normalize.css": "^8.0.1"
+  }
+}
