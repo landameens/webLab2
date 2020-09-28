@@ -64,7 +64,7 @@ function sendRequest(key) {
     const keys = ["button", "canvas"];
     if (keys.includes(key)) {
         setPointsCoordinate();
-        fetch(`/webLab2_war_exploded/controller?` + new URLSearchParams({
+        fetch(`/web/controller?` + new URLSearchParams({
             x: parseFloat(xValue),
             y: parseFloat(yValue),
             r: parseFloat(rValue),
