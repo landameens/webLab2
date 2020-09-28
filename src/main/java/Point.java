@@ -35,20 +35,12 @@ public class Point {
         return result;
     }
 
-//    public double[] getPoint() {
-//        double k = 140 / getR();
-//        double xCoordinate = getX() * k + 150;
-//        double yCoordinate = 180 - (getY() * k);
-//
-//        return new double[]{xCoordinate, yCoordinate};
-//    }
-
     @Override
     public String toString() {
         return "<tr>" +
-                "<td>" + String.valueOf(getX()).replace(".", ",") + "</td>" +
-                "<td>" + String.valueOf(getY()).replace(".", ",") + "</td>" +
-                "<td>" + String.valueOf(getR()).replace(".", ",") + "</td>" +
+                "<td>" + getX() + "</td>" +
+                "<td>" + getY() + "</td>" +
+                "<td>" + getR() + "</td>" +
                 "<td>" + getResult() + "</td>" +
                 "<td>" + dateFormat.format(date) + "</td>" +
                 "</tr>";

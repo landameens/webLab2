@@ -93,3 +93,18 @@ function setPointer(x, y) {
     ctx.arc(x, y, 4, 0, (Math.PI * 2), true);
     ctx.fill();
 }
+
+function setPointsCoordinate() {
+    const pointsCoordinates = sessionStorage.getItem('points') ? JSON.parse(sessionStorage.getItem('points')) : [];
+
+    const k = 140 / rValue
+    const xCoordinate = (xValue * k) + 150;
+    const yCoordinate = 180 - (yValue * k);
+    const coordinate = {
+        "x": xCoordinate,
+        "y": yCoordinate,
+    };
+
+    pointsCoordinates.push(coordinate);
+    sessionStorage.setItem('points', JSON.stringify(pointsCoordinates));
+}

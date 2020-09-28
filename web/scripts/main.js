@@ -1,6 +1,8 @@
 let xValue, yValue, rValue;
 const $xInput = $('#x-input');
 
+const pointsCoordinates = sessionStorage.getItem('points') ? JSON.parse(sessionStorage.getItem('points')) : [];
+
 $('.form_button').on('click', function (event) {
     event.preventDefault();
 
@@ -29,25 +31,30 @@ canvas.addEventListener("click", (event) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+    pointsCoordinates.forEach(value => {
+        setPointer(value.x, value.y);
+    })
+
     const rButtons = document.querySelectorAll("input[name=R-button]");
     buttonOnClick(rButtons, rValue);
     const yButtons = document.querySelectorAll("input[name=Y-button]");
     buttonOnClick(yButtons, yValue);
 
-    function buttonOnClick(button, value) {
-        button.forEach(element => {
-            element.addEventListener('click', function () {
-                value = this.value;
-                button.forEach(function (element) {
-                    element.classList.remove("check-button");
-                    element.removeAttribute("checked");
-                });
-                this.classList.add("check-button");
-                this.setAttribute("checked", "");
-            })
-        })
-    }
 });
+
+function buttonOnClick(button, value) {
+    button.forEach(element => {
+        element.addEventListener('click', function () {
+            value = this.value;
+            button.forEach(function (element) {
+                element.classList.remove("check-button");
+                element.removeAttribute("checked");
+            });
+            this.classList.add("check-button");
+            this.setAttribute("checked", "");
+        })
+    })
+}
 
 function getRelativeCoords(event) {
     return {x: event.offsetX, y: event.offsetY};
@@ -56,6 +63,7 @@ function getRelativeCoords(event) {
 function sendRequest(key) {
     const keys = ["button", "canvas"];
     if (keys.includes(key)) {
+        setPointsCoordinate();
         fetch(`/webLab2_war_exploded/controller?` + new URLSearchParams({
             x: parseFloat(xValue),
             y: parseFloat(yValue),
@@ -69,6 +77,7 @@ function sendRequest(key) {
 
 function isRChecked() {
     const rButtons = document.querySelectorAll("input[name=R-button]");
+    const $rInput = $('#r-input');
     let result = false;
     rButtons.forEach(element => {
         if (element.classList.contains("check-button")) {
@@ -79,14 +88,15 @@ function isRChecked() {
     });
 
     if (result === false) {
-        notChecked($('#r-input'))
+        notChecked($rInput)
     } else {
-        removeNotChecked($('#r-input'))
+        removeNotChecked($rInput)
     }
     return result
 }
 
 function isYChecked() {
+    const $yInput = $('#y-input')
     const yButtons = document.querySelectorAll("input[name=Y-button]");
     let result = false;
     yButtons.forEach(element => {
@@ -98,9 +108,9 @@ function isYChecked() {
     });
 
     if (result === false) {
-        notChecked($('#y-input'))
+        notChecked($yInput)
     } else {
-        removeNotChecked($('#y-input'))
+        removeNotChecked($yInput)
     }
     return result;
 }

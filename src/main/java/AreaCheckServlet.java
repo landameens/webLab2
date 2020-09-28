@@ -32,7 +32,8 @@ public class AreaCheckServlet extends HttpServlet {
 
         context.setAttribute("arrayPoints", points.toString().replace(",", "")
                 .replace("[", "")
-                .replace("]", ""));
+                .replace("]", "")
+                .replace(".", ","));
         context.setAttribute("coordinates", coordinates);
 
         req.getServletContext().getRequestDispatcher("/result.jsp").forward(req, resp);
